@@ -1,5 +1,6 @@
 import random
 import sys
+import pyinputplus as pyip
 
 class GuessTheNumber:  
     """
@@ -33,17 +34,14 @@ class GuessTheNumber:
 
 if __name__ == '__main__':
     while True:
-        user_input = input("Enter a number between 1 and 20\t")
-        if user_input == 'quit':
-            break
-        try:
-            user_num = int(user_input)
-            guess = GuessTheNumber(int(user_num))
+        user_choice = pyip.inputChoice(['play','quit'])    
+        if user_choice == 'play':
+            user_input = pyip.inputNum("Enter a number between 1 and 20\t", min=1, max=20)
+            guess = GuessTheNumber(user_input)
             guess.isguessright()
-        except ValueError:
-            print(f"This is not a valid number. It isnt a number at all! This is a string, go and try again, Better luck next time")
-
-
+        elif user_choice == 'quit':
+            break
+        
 
 
 
